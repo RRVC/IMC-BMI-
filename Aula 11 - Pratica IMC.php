@@ -56,26 +56,31 @@
                 if(strlen($_POST['altura']) <= 0 || strlen($_POST['peso']) <= 0 ){
                     echo "ERRO! Faltam dados";
                 } else {
-                    $altura = $_POST['altura'];
+                    $alturaV = $_POST['altura'];
+                    $altura = str_replace(',','.',$alturaV);
                     $peso = $_POST['peso'];
-                    $imcres = $peso / ($altura * $altura);
-                    $imc = number_format($imcres, 2);
-                    echo "Seu IMC é: " . $imc . "<br>";
-                    if($imc < 17){
-                        echo "Muito abaixo do peso";
-                    } else if($imc <= 18.49){
-                        echo "Abaixo do peso";
-                    } else if ($imc <= 24.99){
-                        echo "Peso Normal";
-                    } else if ($imc <= 29.99){
-                        echo "Acima do peso";
-                    } else if ($imc <= 34.99){
-                        echo "Obesidade grau I";
-                    } else if ($imc <= 39.99){
-                        echo "Obesidade grau II";
-                    } else if ($imc > 40){
-                        echo "Obesidade grau III";
-                    }
+                    if($altura <= 1 || $peso <= 20){
+                        echo "Dados fora do parametro";
+                    } else {
+                        $imcres = $peso / ($altura * $altura);
+                        $imc = number_format($imcres, 2);
+                        echo "Seu IMC é: " . $imc . "<br>";
+                        if($imc < 17){
+                            echo "Muito abaixo do peso";
+                        } else if($imc <= 18.49){
+                            echo "Abaixo do peso";
+                        } else if ($imc <= 24.99){
+                            echo "Peso Normal";
+                        } else if ($imc <= 29.99){
+                            echo "Acima do peso";
+                        } else if ($imc <= 34.99){
+                            echo "Obesidade grau I";
+                        } else if ($imc <= 39.99){
+                            echo "Obesidade grau II";
+                        } else if ($imc > 40){
+                            echo "Obesidade grau III";
+                        }
+                    }   
                 }
             } else {
                 echo "Preencha os campos!";

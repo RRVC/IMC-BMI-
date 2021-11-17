@@ -1,2 +1,2 @@
 # IMC-BMI
-Simple BMI code / Código simples de IMC
+Código simples de IMC / Simple BMI code
